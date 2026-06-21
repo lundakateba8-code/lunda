@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | L.K. la ba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <style>
+        /* ====== Variables & Reset ====== */
+:root {
+    --deep-navy: #0d1b2a;
+    --navy: #112240;
+    --navy-light: #1a3350;
+    --teal: #0d7373;
+    --teal-light: #149e9e;
+    --teal-glow: #1ad1d1;
+    --gold: #c8963e;
+    --gold-light: #e0b860;
+    --gold-pale: #f0d78c;
+    --cream: #f5f0e8;
+    --white: #ffffff;
+    --gray-100: #f0f4f8;
+    --gray-200: #dce4ec;
+    --gray-300: #bcc8d4;
+    --gray-500: #5a6f80;
+    --gray-600: #3a4a58;
+    --danger: #e74c3c;
+    --success: #2ecc71;
+    --whatsapp: #25D366;
+    --linkedin: #0A66C2;
+    --github: #171515;
+    --shadow-sm: 0 1px 3px rgba(13, 27, 42, 0.1);
+    --shadow-md: 0 4px 12px rgba(13, 27, 42, 0.12);
+    --shadow-lg: 0 10px 30px rgba(13, 27, 42, 0.15);
+    --shadow-gold: 0 8px 30px rgba(200, 150, 62, 0.25);
+    --shadow-teal: 0 8px 30px rgba(13, 115, 115, 0.3);
+    --radius-sm: 0.5rem;
+    --radius-md: 0.875rem;
+    --radius-lg: 1.25rem;
+    --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'Inter', sans-serif;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: var(--font-body);
+    background: var(--gray-100);
+    color: var(--gray-600);
+    line-height: 1.7;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(13, 115, 115, 0.03) 30px, rgba(13, 115, 115, 0.03) 31px),
+        repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(200, 150, 62, 0.02) 30px, rgba(200, 150, 62, 0.02) 31px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.hidden {
+    display: none !important;
+}
+.container {
+    max-width: 68.75rem; /* 1100px */
+    margin: 0 auto;
+    padding: 0 1.5rem; /* 24px */
+}
+.section {
+    padding: 5rem 0;
+}
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--deep-navy);
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
+}
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-bounce);
+    font-family: inherit;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+.btn-primary {
+    background: var(--gold);
+    color: var(--deep-navy);
+    box-shadow: var(--shadow-gold);
+    transition: background-color 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+.btn-primary:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+.btn-primary:disabled {
+    background: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    color: #666;
+}
+.btn-teal {
+    background: var(--teal);
+    color: white;
+    box-shadow: var(--shadow-teal);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-teal:hover {
+    background: var(--teal-light);
+    transform: translateY(-2px);
+}
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--teal);
+    color: var(--teal);
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+.btn-outline:hover {
+    background: var(--teal);
+    color: white;
+    transform: translateY(-2px);
+}
+.btn-danger {
+    background: var(--danger);
+    color: white;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-danger:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+}
+.btn-whatsapp {
+    background: var(--whatsapp);
+    color: white;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-whatsapp:hover {
+    background: #1ebe5a;
+    transform: scale(1.03);
+}
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
+/* ====== HEADER ====== */
+.header {
+    padding: 0.75rem 1.5rem;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(13, 27, 42, 0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: var(--transition-smooth);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.header-inner {
+    max-width: 68.75rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+.logo span {
+    color: var(--gold-light);
+}
+
+/* ====== BOUTON MENU ====== */
+.menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    font-family: inherit;
+    -webkit-font-smoothing: antialiased;
+}
+.menu-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+.menu-btn i {
+    font-size: 1.1rem;
+}
+
+/* ====== MENU DÉROULANT ====== */
+.nav-dropdown {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 320px;
+    max-width: 85%;
+    height: 100vh;
+    background: rgba(13, 27, 42, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 5rem 1.875rem 1.875rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    box-shadow: -10px 0 40px rgba(0, 0, 0, 0.3);
+    -webkit-font-smoothing: antialiased;
+}
+.nav-dropdown.open {
+    right: 0;
+}
+
+.nav-dropdown a,
+.nav-dropdown button {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    padding: 0.75rem 1.125rem;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    text-align: left;
+}
+.nav-dropdown a:hover,
+.nav-dropdown button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+.nav-dropdown a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--white);
+}
+.nav-dropdown a i,
+.nav-dropdown button i {
+    width: 24px;
+    text-align: center;
+    color: var(--gold-light);
+}
+
+.nav-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.08);
+    margin: 0.5rem 0;
+}
+
+.nav-user-info {
+    padding: 0.75rem 1.125rem;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 1rem;
+    margin-bottom: 0.5rem;
+}
+.nav-user-info i {
+    font-size: 1.2rem;
+    color: var(--gold-light);
+}
+
+/* Overlay pour fermer le menu */
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 998;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+.menu-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ====== Cartes ====== */
+.card {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth), box-shadow 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+}
+
+/* ====== Timeline ====== */
+.timeline {
+    position: relative;
+    padding-left: 1.875rem;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--teal-light);
+    opacity: 0.4;
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 1.75rem;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 3px var(--teal-light);
+}
+.timeline-date {
+    font-size: 0.8rem;
+    color: var(--teal);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* ====== Compétences ====== */
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+    margin-top: 0.9375rem;
+}
+.skill-tag {
+    background: rgba(13, 115, 115, 0.08);
+    color: var(--teal);
+    padding: 0.375rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+/* ====== Contact ====== */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.125rem;
+    padding: 0.875rem;
+    background: var(--gray-100);
+    border-radius: var(--radius-sm);
+}
+.contact-item i {
+    font-size: 1.2rem;
+    color: var(--teal);
+    width: 24px;
+    text-align: center;
+}
+.contact-item a {
+    color: var(--deep-navy);
+    text-decoration: none;
+    font-weight: 500;
+}
+.contact-item a:hover {
+    color: var(--teal);
+}
+
+/* ====== Dashboard ====== */
+.welcome-banner {
+    background: var(--cream);
+    border-left: 5px solid var(--gold);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.login-required-msg {
+    text-align: center;
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    color: #856404;
+    margin-top: 0.625rem;
+}
+.form-group {
+    margin-bottom: 1rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.375rem;
+    color: var(--gray-600);
+    font-size: 0.9rem;
+}
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--teal-light);
+    box-shadow: 0 0 0 3px rgba(13, 115, 115, 0.1);
+}
+.message {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+.message.error {
+    color: var(--danger);
+}
+.message.success {
+    color: var(--success);
+}
+
+/* ====== Utilisateurs ====== */
+#userList {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.625rem;
+}
+#userList li {
+    background: var(--gray-100);
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 4px solid var(--teal);
+}
+#userList .empty-msg {
+    justify-content: center;
+    color: var(--gray-500);
+    border-left-color: var(--gray-300);
+}
+
+/* ====== Pages ====== */
+.page {
+    display: none;
+    animation: fadePage 0.3s ease;
+    padding-top: 5rem;
+    flex: 1;
+}
+.page.active {
+    display: block;
+}
+@keyframes fadePage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====== Hero ====== */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0d1b2a 0%, #112240 60%, #0a1628 100%);
+    position: relative;
+    padding: 2.5rem 1.5rem;
+    overflow: hidden;
+    border-radius: 0 0 2.5rem 2.5rem;
+    margin-bottom: 1.25rem;
+    -webkit-font-smoothing: antialiased;
+}
+.hero-content {
+    text-align: center;
+    max-width: 46.875rem;
+    z-index: 2;
+}
+.hero-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(26, 209, 209, 0.3);
+    border: 3px solid rgba(255, 255, 255, 0.2);
+}
+.hero-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+}
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+}
+.hero h1 span {
+    background: linear-gradient(to right, var(--teal-glow), var(--gold-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1.2rem;
+    margin: 0.75rem 0 1.25rem;
+}
+.hero-tags {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9375rem;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.625rem 1.5rem;
+    border-radius: 50px;
+    color: var(--gold-pale);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ====== Modale ====== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(6px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    -webkit-font-smoothing: antialiased;
+}
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal {
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    width: 90%;
+    max-width: 420px;
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+.modal-overlay.active .modal {
+    transform: translateY(0);
+}
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: var(--gray-500);
+    transition: color 0.3s;
+}
+.modal-close:hover {
+    color: var(--danger);
+}
+.modal h2 {
+    font-family: var(--font-heading);
+    color: var(--deep-navy);
+    margin-bottom: 1.25rem;
+    text-align: center;
+}
+.auth-toggle {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+.auth-toggle button {
+    background: none;
+    border: none;
+    color: var(--teal);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/* ====== WhatsApp flottant ====== */
+.whatsapp-float {
+    position: fixed;
+    bottom: 1.875rem;
+    right: 1.875rem;
+    width: 60px;
+    height: 60px;
+    background: var(--whatsapp);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 900;
+    text-decoration: none;
+    transition: var(--transition-bounce);
+    animation: pulse-wa 2s infinite;
+}
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+}
+@keyframes pulse-wa {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+/* ====== Footer ====== */
+footer {
+    background: var(--deep-navy);
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: auto;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    .hero-avatar {
+        width: 120px;
+        height: 120px;
+    }
+    .btn-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-group .btn {
+        justify-content: center;
+    }
+    .hero {
+        min-height: 70vh;
+        border-radius: 0;
+    }
+    .page {
+        padding-top: 4.375rem;
+    }
+    .nav-dropdown {
+        width: 100%;
+        max-width: 100%;
+        padding: 4.375rem 1.25rem 1.25rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- ====== WhatsApp flottant ====== -->
+    <a href="https://wa.me/243970517365?text=Bonjour%20L.K.%20la%20ba%2C%20je%20viens%20de%20visiter%20ton%20portfolio%20!"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Discuter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+    <!-- ====== HEADER ====== -->
+    <header class="header" id="header">
+        <div class="header-inner">
+            <div class="logo" id="logoHome">
+                LK<span> </span>
+            </div>
+            <!-- BOUTON MENU (UN SEUL BOUTON) -->
+            <button class="menu-btn" id="menuToggle">
+                <i class="fa-solid fa-bars"></i>
+                <span>Menu</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ====== OVERLAY ====== -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- ====== MENU DÉROULANT ====== -->
+    <nav class="nav-dropdown" id="navDropdown">
+        <!-- Informations utilisateur -->
+        <div class="nav-user-info" id="navUserInfo">
+            <i class="fa-solid fa-user"></i>
+            <span id="navUsernameDisplay">Invité</span>
+        </div>
+
+        <a href="#" data-page="home" class="active"><i class="fa-solid fa-house"></i> Accueil</a>
+        <a href="#" data-page="about"><i class="fa-solid fa-user"></i> Biographie</a>
+        <a href="#" data-page="formation"><i class="fa-solid fa-graduation-cap"></i> Parcours</a>
+        <a href="#" data-page="skills"><i class="fa-solid fa-code"></i> Compétences</a>
+        <a href="#" data-page="contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+        <a href="#" data-page="users"><i class="fa-solid fa-users"></i> Utilisateurs</a>
+
+        <div class="nav-divider"></div>
+
+        <!-- Connexion / Déconnexion -->
+        <div id="navLoginBtn">
+            <button id="navShowLoginBtn"><i class="fa-solid fa-right-to-bracket"></i> Connexion</button>
+        </div>
+        <div id="navLogoutBtn" class="hidden">
+            <button id="navLogoutBtnAction"><i class="fa-solid fa-arrow-right-from-bracket"></i> Déconnexion</button>
+        </div>
+    </nav>
+
+    <!-- ====== PAGES ====== -->
+    <main>
+
+        <!-- ====== PAGE ACCUEIL ====== -->
+        <section class="page active" id="page-home">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="hero-avatar">
+                        <!-- REMPLACEZ "votre-photo.jpg" par le nom de votre fichier photo -->
+                        <img src="/WhatsApp Image 2026-06-21 at 15.18.40.jpeg" alt="LUNDA KATEBA VICTOIRE" />
+                    </div>
+                    <h1>
+                        LUNDA KATEBA <br />
+                        <span>VICTOIRE</span>
+                    </h1>
+                    <p class="hero-sub">Électricien industriel &amp; Informaticien • ISCI Likasi</p>
+                    <div class="hero-tags">
+                        <span><i class="fa-solid fa-cake-candles"></i> 25/11/2004</span>
+                        <span><i class="fa-solid fa-location-dot"></i> Likasi, RDC</span>
+                        <span><i class="fa-solid fa-bolt"></i> Électricité</span>
+                        <span><i class="fa-solid fa-laptop-code"></i> Informatique</span>
+                    </div>
+                    <div class="btn-group" style="margin-top: 30px;">
+                        <a href="#" data-page="contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Me contacter</a>
+                        <a href="#" data-page="about" class="btn btn-teal"><i class="fa-solid fa-address-card"></i> En savoir plus</a>
+                        <a href="/LUNDA KATEBA VICTOIRE cv.pdf" target="_blank" class="btn btn-outline"><i class="fa-solid fa-file-pdf"></i> Télécharger CV</a>
+                    </div>
+                </div>
+            </div>
+            <div class="container" style="text-align:center; padding:20px 0;">
+                <p style="font-size:1.1rem; max-width:700px; margin:0 auto;">
+                    Bienvenue sur mon portfolio. Je suis un jeune passionné de technologie, alliant électricité industrielle et informatique pour innover et contribuer au développement de mon pays.
+                </p>
+            </div>
+        </section>
+
+        <!-- ====== PAGE BIOGRAPHIE ====== -->
+        <section class="page" id="page-about">
+            <div class="container section">
+                <h2 class="section-title">Biographie</h2>
+                <div class="grid-2">
+                    <div>
+                        <p style="font-size:1.05rem; margin-bottom:15px;" id="aboutBio">
+                            Je suis <strong>LUNDA KATEBA VICTOIRE</strong>, né le 25 novembre 2004 à Likasi, dans la province du Haut-Katanga en République Démocratique du Congo. Passionné par la technologie et l'innovation, je me suis orienté vers une double compétence en <strong>électricité industrielle</strong> et en <strong>informatique</strong>.
+                        </p>
+                        <p style="margin-bottom:15px;">
+                            Mon objectif est de maîtriser les systèmes électriques et numériques pour contribuer au développement technologique de mon pays. Rigoureux, créatif et toujours motivé à apprendre, je poursuis mes études universitaires à l'<strong>ISCI Likasi</strong> tout en perfectionnant mes compétences pratiques.
+                        </p>
+                        <p>
+                            Je suis convaincu que l'alliance de l'électricité et de l'informatique est la clé pour relever les défis énergétiques et digitaux de demain.
+                        </p>
+                    </div>
+                    <div class="card" id="personalInfoCard">
+                        <h3 style="font-family:var(--font-heading); color:var(--deep-navy); margin-bottom:14px;">
+                            <i class="fa-solid fa-circle-info" style="color:var(--teal);"></i> Informations personnelles
+                        </h3>
+                        <p><strong>Nom :</strong> LUNDA KATEBA VICTOIRE</p>
+                        <p><strong>Date de naissance :</strong> 25 novembre 2004</p>
+                        <p><strong>Lieu de naissance :</strong> Likasi, Haut-Katanga</p>
+                        <p><strong>Nationalité :</strong> Congolaise (RDC)</p>
+                        <p><strong>Établissement actuel :</strong> ISCI Likasi</p>
+                        <p><strong>Double spécialité :</strong> Électricité industrielle &amp; Informatique</p>
+                    </div>
+                </div>
+
+                <!-- ====== DASHBOARD ====== -->
+                <div id="dashboard" class="hidden" style="margin-top:40px; background:var(--white); padding:24px; border-radius:var(--radius-lg);">
+                    <div class="welcome-banner">
+                        <i class="fa-solid fa-circle-check" style="color:var(--success); font-size:1.5rem;"></i>
+                        <span><strong>Bienvenue <span id="dashUsername"></span> !</strong> Modifiez votre bio et vos compétences ci-dessous.</span>
+                    </div>
+                    <h3 style="font-family:var(--font-heading); color:var(--deep-navy); margin-bottom:16px;">Modifier mon profil public</h3>
+                    <form id="profileForm" style="display:grid; gap:16px; max-width:600px;">
+                        <div class="form-group">
+                            <label>Bio / Présentation</label>
+                            <textarea id="editBio" rows="4" style="width:100%; padding:12px; border:1px solid var(--gray-200); border-radius:8px;"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Compétences (séparées par des virgules)</label>
+                            <input type="text" id="editSkills" placeholder="HTML, CSS, JavaScript, Électricité bâtiment, ..." />
+                        </div>
+                        <div class="btn-group">
+                            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Enregistrer les modifications</button>
+                        </div>
+                    </form>
+                    <div id="profileMessage" class="message" style="text-align:left;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== PAGE PARCOURS ====== -->
+        <section class="page" id="page-formation">
+            <div class="container section" style="background: var(--gray-100); border-radius: var(--radius-lg); margin-top:20px;">
+                <h2 class="section-title">Parcours scolaire</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Primaire</div>
+                        <h3 style="font-family:var(--font-heading); color:var(--deep-navy);">École primaire Vyombo</h3>
+                        <p>De la 1ère à la 5ème année. Acquisition des bases fondamentales.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Collège</div>
+                        <h3 style="font-family:var(--font-heading); color:var(--deep-navy);">Complexe scolaire SNCC</h3>
+                        <p>Poursuite du cycle secondaire.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h3 style="font-family:var(--font-heading); color:var(--deep-navy);">Diplôme de fin d'études secondaires</h3>
+                        <p><strong>Institut Technique de Kalunga (IT Kalunga)</strong> – Obtention du diplôme d'État en électricité (6ème année).</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Présent</div>
+                        <h3 style="font-family:var(--font-heading); color:var(--deep-navy);">Licence en Informatique</h3>
+                        <p><strong>ISCI Likasi</strong> – Institut Supérieur de Commerce Informatique et Science Infirmières. Formation universitaire en cours.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== PAGE COMPÉTENCES ====== -->
+        <section class="page" id="page-skills">
+            <div class="container section">
+                <h2 class="section-title">Compétences</h2>
+                <div id="skillsContainer" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:24px;">
+                    <!-- Rempli dynamiquement par JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== PAGE CONTACT ====== -->
+        <section class="page" id="page-contact">
+            <div class="container section">
+                <h2 class="section-title">Me contacter</h2>
+                <div class="grid-2">
+                    <div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div><strong>Email</strong><br /><a href="mailto:lundakateba8@gmail.com">lundakateba8@gmail.com</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <div><strong>Téléphone</strong><br /><a href="tel:+243970517365">+243 970 517 365</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-brands fa-whatsapp" style="color:var(--whatsapp);"></i>
+                            <div><strong>WhatsApp</strong><br /><a href="https://wa.me/243970517365" target="_blank">Discuter directement</a></div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div><strong>Adresse</strong><br />Quartier Mivuka, Commune Shituru, Likasi</div>
+                        </div>
+                        <div class="btn-group" style="margin-top:20px;">
+                            <a href="mailto:lundakateba8@gmail.com" class="btn btn-teal"><i class="fa-regular fa-envelope"></i> Email</a>
+                            <a href="https://wa.me/243970517365" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                        <div style="margin-top:30px;">
+                            <h3 style="font-family:var(--font-heading); color:var(--deep-navy);">Retrouvez-moi aussi</h3>
+                            <div class="btn-group">
+                                <a href="https://linkedin.com/in/lunda-victoire" target="_blank" class="btn btn-outline"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                                <a href="https://github.com/lunda-victoire" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                                <a href="cv-lunda-victoire.pdf" target="_blank" class="btn btn-outline"><i class="fa-solid fa-file-pdf"></i> CV</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3 style="font-family:var(--font-heading); margin-bottom:16px;">Envoyez-moi un message</h3>
+                        <form id="contactForm" style="display:flex; flex-direction:column; gap:14px;">
+                            <input type="text" id="contactName" placeholder="Votre nom" style="padding:12px; border:1px solid var(--gray-200); border-radius:8px;" required />
+                            <input type="email" id="contactEmail" placeholder="Votre email" style="padding:12px; border:1px solid var(--gray-200); border-radius:8px;" required />
+                            <textarea id="contactMessage" rows="4" placeholder="Votre message" style="padding:12px; border:1px solid var(--gray-200); border-radius:8px;" required></textarea>
+                            <button type="submit" id="sendMessageBtn" class="btn btn-block btn-whatsapp" disabled>
+                                <i class="fa-brands fa-whatsapp"></i> Envoyer sur WhatsApp
+                            </button>
+                            <div id="loginRequiredMessage" class="login-required-msg">
+                                <i class="fa-solid fa-lock"></i> Connectez-vous pour envoyer un message.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== PAGE UTILISATEURS ====== -->
+        <section class="page" id="page-users">
+            <div class="container section">
+                <h2 class="section-title">
+                    <i class="fa-solid fa-users" style="color:var(--teal);"></i> Liste des utilisateurs inscrits
+                </h2>
+                <div class="card" style="max-width:700px; margin:0 auto;">
+                    <p style="margin-bottom:20px; color:var(--gray-500); text-align:center;">
+                        Voici la liste de toutes les personnes qui ont créé un compte sur ce portfolio.
+                    </p>
+                    <div id="userListContainer">
+                        <ul id="userList">
+                            <li class="empty-msg">Aucun utilisateur inscrit pour le moment.</li>
+                        </ul>
+                    </div>
+                    <p style="margin-top:20px; font-size:0.85rem; color:var(--gray-500); text-align:center;">
+                        <i class="fa-solid fa-database"></i> Les données sont stockées localement dans votre navigateur.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====== FOOTER ====== -->
+    <footer>
+        <p>© 2025 LUNDA KATEBA VICTOIRE – Électricien &amp; Informaticien | ISCI Likasi</p>
+    </footer>
+
+    <!-- ====== MODALE AUTH ====== -->
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <h2 id="modalTitle">Connexion</h2>
+            <div id="loginFormContainer">
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label>Nom d'utilisateur</label>
+                        <input type="text" id="loginUsername" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" id="loginPassword" required />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Se connecter</button>
+                </form>
+                <p class="auth-toggle">Pas encore de compte ? <button id="switchToRegister">S'inscrire</button></p>
+            </div>
+            <div id="registerFormContainer" class="hidden">
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>Nom d'utilisateur</label>
+                        <input type="text" id="regUsername" required />
+                    </div>
+                    <div class="form-group">
+                        <label>Mot de passe</label>
+                        <input type="password" id="regPassword" required minlength="4" />
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Créer un compte</button>
+                </form>
+                <p class="auth-toggle">Déjà inscrit ? <button id="switchToLogin">Se connecter</button></p>
+            </div>
+            <div id="authMessage" class="message"></div>
+        </div>
+    </div>
+
+    <!-- ====== SCRIPT ====== -->
+    <script>
+        (function() {
+            // ---------- Gestion utilisateurs ----------
+            const USERS_KEY = 'portfolio_users';
+            const CURRENT_USER_KEY = 'portfolio_current_user';
+            const PROFILE_KEY = 'portfolio_profile';
+
+            const getUsers = () => JSON.parse(localStorage.getItem(USERS_KEY)) || [];
+            const saveUsers = users => localStorage.setItem(USERS_KEY, JSON.stringify(users));
+            const getCurrentUser = () => JSON.parse(localStorage.getItem(CURRENT_USER_KEY));
+            const setCurrentUser = user => localStorage.setItem(CURRENT_USER_KEY, JSON.stringify(user));
+            const clearCurrentUser = () => localStorage.removeItem(CURRENT_USER_KEY);
+            const getProfile = () => JSON.parse(localStorage.getItem(PROFILE_KEY)) || {
+                bio: "Je suis <strong>L.K. la ba</strong>, né le 25 novembre 2004 à Likasi. Passionné par la technologie, j'ai une double compétence en <strong>électricité industrielle</strong> et <strong>informatique</strong>. Mon objectif est de maîtriser les systèmes électriques et numériques pour contribuer au développement technologique de mon pays.",
+                skills: ["Électricité bâtiment", "Électricité industrielle", "HTML", "CSS", "JavaScript", "MySQL", "Figma"]
+            };
+            const saveProfile = profile => localStorage.setItem(PROFILE_KEY, JSON.stringify(profile));
+
+            // ---------- DOM ----------
+            const menuToggle = document.getElementById('menuToggle');
+            const navDropdown = document.getElementById('navDropdown');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const navUsernameDisplay = document.getElementById('navUsernameDisplay');
+            const navLoginBtn = document.getElementById('navLoginBtn');
+            const navLogoutBtn = document.getElementById('navLogoutBtn');
+            const navShowLoginBtn = document.getElementById('navShowLoginBtn');
+            const navLogoutBtnAction = document.getElementById('navLogoutBtnAction');
+
+            const authModal = document.getElementById('authModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const modalTitle = document.getElementById('modalTitle');
+            const loginFormContainer = document.getElementById('loginFormContainer');
+            const registerFormContainer = document.getElementById('registerFormContainer');
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+            const authMessage = document.getElementById('authMessage');
+            const switchToRegister = document.getElementById('switchToRegister');
+            const switchToLogin = document.getElementById('switchToLogin');
+            const dashboard = document.getElementById('dashboard');
+            const dashUsername = document.getElementById('dashUsername');
+            const profileForm = document.getElementById('profileForm');
+            const editBio = document.getElementById('editBio');
+            const editSkills = document.getElementById('editSkills');
+            const profileMessage = document.getElementById('profileMessage');
+            const aboutBio = document.getElementById('aboutBio');
+            const skillsContainer = document.getElementById('skillsContainer');
+            const contactForm = document.getElementById('contactForm');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            const loginRequiredMessage = document.getElementById('loginRequiredMessage');
+            const userList = document.getElementById('userList');
+            const logoHome = document.getElementById('logoHome');
+
+            // Navigation
+            const navItems = document.querySelectorAll('[data-page]');
+            const pages = {
+                home: document.getElementById('page-home'),
+                about: document.getElementById('page-about'),
+                formation: document.getElementById('page-formation'),
+                skills: document.getElementById('page-skills'),
+                contact: document.getElementById('page-contact'),
+                users: document.getElementById('page-users')
+            };
+
+            let isLoggedIn = false;
+            let currentUsername = null;
+
+            // ---------- MENU ----------
+            function toggleMenu(open) {
+                const shouldOpen = open !== undefined ? open : !navDropdown.classList.contains('open');
+                navDropdown.classList.toggle('open', shouldOpen);
+                menuOverlay.classList.toggle('active', shouldOpen);
+                document.body.style.overflow = shouldOpen ? 'hidden' : '';
+            }
+
+            menuToggle.addEventListener('click', () => toggleMenu());
+            menuOverlay.addEventListener('click', () => toggleMenu(false));
+
+            // Fermer le menu quand on clique sur un lien
+            navDropdown.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('click', () => {
+                    setTimeout(() => toggleMenu(false), 200);
+                });
+            });
+
+            // ---------- Navigation ----------
+            function navigateTo(pageId) {
+                Object.values(pages).forEach(p => { if (p) p.classList.remove('active'); });
+                if (pages[pageId]) pages[pageId].classList.add('active');
+                navItems.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.page === pageId) link.classList.add('active');
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            navItems.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (link.dataset.page) navigateTo(link.dataset.page);
+                });
+            });
+            logoHome.addEventListener('click', () => navigateTo('home'));
+
+            // ---------- Modale ----------
+            const openModal = (mode = 'login') => {
+                authModal.classList.add('active');
+                if (mode === 'login') {
+                    loginFormContainer.classList.remove('hidden');
+                    registerFormContainer.classList.add('hidden');
+                    modalTitle.textContent = 'Connexion';
+                } else {
+                    loginFormContainer.classList.add('hidden');
+                    registerFormContainer.classList.remove('hidden');
+                    modalTitle.textContent = 'Inscription';
+                }
+                authMessage.textContent = '';
+                authMessage.className = 'message';
+                loginForm.reset();
+                registerForm.reset();
+            };
+            const closeModal = () => authModal.classList.remove('active');
+
+            navShowLoginBtn.addEventListener('click', () => { toggleMenu(false);
+                openModal('login'); });
+            closeModalBtn.addEventListener('click', closeModal);
+            authModal.addEventListener('click', e => { if (e.target === authModal) closeModal(); });
+            switchToRegister.addEventListener('click', e => { e.preventDefault();
+                openModal('register'); });
+            switchToLogin.addEventListener('click', e => { e.preventDefault();
+                openModal('login'); });
+
+            // ---------- Inscription ----------
+            registerForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const username = document.getElementById('regUsername').value.trim();
+                const password = document.getElementById('regPassword').value.trim();
+                if (!username || !password) {
+                    authMessage.textContent = 'Veuillez remplir tous les champs.';
+                    authMessage.className = 'message error';
+                    return;
+                }
+                const users = getUsers();
+                if (users.find(u => u.username === username)) {
+                    authMessage.textContent = 'Ce nom d\'utilisateur existe déjà.';
+                    authMessage.className = 'message error';
+                    return;
+                }
+                users.push({ username, password });
+                saveUsers(users);
+                authMessage.textContent = 'Compte créé avec succès !';
+                authMessage.className = 'message success';
+                registerForm.reset();
+                renderUserList();
+                setTimeout(() => openModal('login'), 1200);
+            });
+
+            // ---------- Connexion ----------
+            loginForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const username = document.getElementById('loginUsername').value.trim();
+                const password = document.getElementById('loginPassword').value.trim();
+                const users = getUsers();
+                const user = users.find(u => u.username === username && u.password === password);
+                if (user) {
+                    setCurrentUser({ username });
+                    updateUIForLoggedInUser(username);
+                    closeModal();
+                } else {
+                    authMessage.textContent = 'Identifiants incorrects.';
+                    authMessage.className = 'message error';
+                }
+            });
+
+            // ---------- Déconnexion ----------
+            navLogoutBtnAction.addEventListener('click', () => {
+                clearCurrentUser();
+                updateUIForLoggedOutUser();
+                toggleMenu(false);
+            });
+
+            // ---------- Mise à jour UI ----------
+            const setContactFormEnabled = enabled => {
+                sendMessageBtn.disabled = !enabled;
+                loginRequiredMessage.style.display = enabled ? 'none' : 'block';
+            };
+
+            const renderUserList = () => {
+                if (!userList) return;
+                const users = getUsers();
+                if (users.length === 0) {
+                    userList.innerHTML =
+                        `<li class="empty-msg"><i class="fa-regular fa-circle" style="margin-right:10px;"></i>Aucun utilisateur inscrit pour le moment.</li>`;
+                } else {
+                    userList.innerHTML = users.map(u =>
+                        `<li>
+                                <span><i class="fa-solid fa-user" style="color:var(--teal); margin-right:12px;"></i>${u.username}</span>
+                                <span style="color:var(--gray-500); font-size:0.8rem;"><i class="fa-solid fa-check-circle" style="color:var(--success);"></i> inscrit</span>
+                            </li>`
+                    ).join('');
+                }
+            };
+
+            const updateUIForLoggedInUser = username => {
+                isLoggedIn = true;
+                currentUsername = username;
+                navUsernameDisplay.textContent = username;
+                navLoginBtn.classList.add('hidden');
+                navLogoutBtn.classList.remove('hidden');
+                dashUsername.textContent = username;
+                dashboard.classList.remove('hidden');
+
+                const profile = getProfile();
+                editBio.value = profile.bio.replace(/<[^>]*>/g, '');
+                editSkills.value = profile.skills.join(', ');
+                renderSkills(profile.skills);
+                aboutBio.innerHTML = profile.bio;
+                setContactFormEnabled(true);
+                renderUserList();
+            };
+
+            const updateUIForLoggedOutUser = () => {
+                isLoggedIn = false;
+                currentUsername = null;
+                navUsernameDisplay.textContent = 'Invité';
+                navLoginBtn.classList.remove('hidden');
+                navLogoutBtn.classList.add('hidden');
+                dashboard.classList.add('hidden');
+
+                const profile = getProfile();
+                aboutBio.innerHTML = profile.bio;
+                renderSkills(profile.skills);
+                setContactFormEnabled(false);
+                contactForm.reset();
+                renderUserList();
+            };
+
+            // ---------- Rendu compétences ----------
+            const renderSkills = skillsArray => {
+                if (!skillsContainer) return;
+                skillsContainer.innerHTML = '';
+                const categories = {
+                    'Électricité': ['Électricité bâtiment', 'Électricité industrielle', 'Câblage', 'Maintenance'],
+                    'Développement Web': ['HTML', 'CSS', 'JavaScript', 'Bootstrap', 'React'],
+                    'Bases de données': ['MySQL', 'SQLite', 'PostgreSQL'],
+                    'Réseaux': ['TCP/IP', 'LAN', 'WLAN'],
+                    'Outils': ['Figma', 'Canva', 'Git', 'VS Code']
+                };
+                const mapped = {};
+                skillsArray.forEach(skill => {
+                    let found = false;
+                    for (let [cat, items] of Object.entries(categories)) {
+                        if (items.map(s => s.toLowerCase()).includes(skill.toLowerCase())) {
+                            if (!mapped[cat]) mapped[cat] = [];
+                            mapped[cat].push(skill);
+                            found = true;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        if (!mapped['Autres']) mapped['Autres'] = [];
+                        mapped['Autres'].push(skill);
+                    }
+                });
+                for (let [cat, skills] of Object.entries(mapped)) {
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    const iconMap = {
+                        'Électricité': 'bolt',
+                        'Développement Web': 'code',
+                        'Bases de données': 'database',
+                        'Réseaux': 'network-wired',
+                        'Outils': 'pen-ruler',
+                        'Autres': 'star'
+                    };
+                    const icon = iconMap[cat] || 'circle';
+                    card.innerHTML = `
+                            <h3 style="font-family:var(--font-heading); color:var(--teal); margin-bottom:10px;">
+                                <i class="fa-solid fa-${icon}"></i> ${cat}
+                            </h3>
+                            <div class="skills-list">
+                                ${skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
+                            </div>
+                        `;
+                    skillsContainer.appendChild(card);
+                }
+            };
+
+            // ---------- Mise à jour profil ----------
+            profileForm.addEventListener('submit', e => {
+                e.preventDefault();
+                const newBio = editBio.value.trim();
+                const skillsRaw = editSkills.value.trim();
+                if (!newBio) {
+                    profileMessage.textContent = 'La bio ne peut pas être vide.';
+                    profileMessage.className = 'message error';
+                    return;
+                }
+                const skillsArray = skillsRaw ? skillsRaw.split(',').map(s => s.trim()).filter(s => s) : [];
+                saveProfile({ bio: newBio, skills: skillsArray });
+                aboutBio.textContent = newBio;
+                renderSkills(skillsArray);
+                profileMessage.textContent = 'Profil mis à jour avec succès !';
+                profileMessage.className = 'message success';
+                setTimeout(() => { profileMessage.textContent = ''; }, 3000);
+            });
+
+            // ---------- Envoi WhatsApp ----------
+            contactForm.addEventListener('submit', e => {
+                e.preventDefault();
+                if (!isLoggedIn) {
+                    alert('Connectez-vous pour envoyer un message.');
+                    return;
+                }
+                const name = document.getElementById('contactName').value.trim();
+                const email = document.getElementById('contactEmail').value.trim();
+                const message = document.getElementById('contactMessage').value.trim();
+                if (!name || !email || !message) {
+                    alert('Remplissez tous les champs.');
+                    return;
+                }
+                const text = `Bonjour L.K. la ba,%0A%0AJe suis ${name} (${email}).%0A%0A${message}`;
+                window.open(`https://wa.me/243970517365?text=${text}`, '_blank', 'noopener,noreferrer');
+                contactForm.reset();
+            });
+
+            // ---------- Initialisation ----------
+            const currentUser = getCurrentUser();
+            if (currentUser) {
+                updateUIForLoggedInUser(currentUser.username);
+            } else {
+                updateUIForLoggedOutUser();
+            }
+            navigateTo('home');
+        })();
+    </script>
+
+</body>
+</html>
